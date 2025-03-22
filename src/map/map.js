@@ -3,13 +3,12 @@ import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { fieldPoly } from "../db/schema/mapSchema.js";
 
-const pgsql = neon(process.env.DB_URL);
-const db = drizzle({ client: pgsql });
-
 const map = new Hono();
 
 map.post("/createpoly", async (c) => {
   try {
+    const pgsql = neon(c.env.DB_URL);
+    const db = drizzle({ client: pgsql });
     const reqobj = await c.req.json();
     const result = await db
       .insert(fieldPoly)
