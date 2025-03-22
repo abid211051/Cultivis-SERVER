@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { Hono } from "hono";
 import weather from "./weather/weather.js";
 import map from "./map/map.js";
