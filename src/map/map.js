@@ -12,7 +12,7 @@ map.post("/createpoly", async (c) => {
     const reqobj = await c.req.json();
     const result = await db
       .insert(fieldPoly)
-      .values({ corrdinates: reqobj })
+      .values({ polygon: reqobj })
       .returning();
     return c.json(result);
   } catch (error) {

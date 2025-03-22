@@ -1,5 +1,5 @@
 {
-  "id": "25520ede-1515-402c-9388-d294ed08f217",
+  "id": "9687ce21-4fd9-4f10-be84-37f5003d5e05",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -15,8 +15,8 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "corrdinates": {
-          "name": "corrdinates",
+        "polygon": {
+          "name": "polygon",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true
