@@ -1,5 +1,5 @@
 {
-  "id": "9687ce21-4fd9-4f10-be84-37f5003d5e05",
+  "id": "d90948d1-3530-4168-9a96-96655e5e8212",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -15,11 +15,38 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
+        "userId": {
+          "name": "userId",
+          "type": "varchar(25)",
+          "primaryKey": false,
+          "notNull": true
+        },
         "polygon": {
           "name": "polygon",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true
+        },
+        "image": {
+          "name": "image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "''"
+        },
+        "croptype": {
+          "name": "croptype",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'Add Crop'"
+        },
+        "editedat": {
+          "name": "editedat",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
