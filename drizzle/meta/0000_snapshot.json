@@ -1,9 +1,122 @@
 {
-  "id": "9687ce21-4fd9-4f10-be84-37f5003d5e05",
+  "id": "5a965f85-2fe1-450d-972a-b9c1cbf74a45",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.cropInfo": {
+      "name": "cropInfo",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "fieldId": {
+          "name": "fieldId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cropName": {
+          "name": "cropName",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cropType": {
+          "name": "cropType",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "maturityDay": {
+          "name": "maturityDay",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sowing": {
+          "name": "sowing",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "harvesting": {
+          "name": "harvesting",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "soilType": {
+          "name": "soilType",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "soilMoist": {
+          "name": "soilMoist",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "surfaceTemp": {
+          "name": "surfaceTemp",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ndvi": {
+          "name": "ndvi",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ndwi": {
+          "name": "ndwi",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lai": {
+          "name": "lai",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "editedAt": {
+          "name": "editedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "cropInfo_fieldId_fields_id_fk": {
+          "name": "cropInfo_fieldId_fields_id_fk",
+          "tableFrom": "cropInfo",
+          "tableTo": "fields",
+          "columnsFrom": [
+            "fieldId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.fields": {
       "name": "fields",
       "schema": "",
@@ -15,11 +128,31 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
+        "userId": {
+          "name": "userId",
+          "type": "varchar(25)",
+          "primaryKey": false,
+          "notNull": true
+        },
         "polygon": {
           "name": "polygon",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true
+        },
+        "image": {
+          "name": "image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "''"
+        },
+        "editedAt": {
+          "name": "editedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},

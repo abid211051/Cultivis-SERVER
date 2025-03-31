@@ -1,5 +1,7 @@
 name = "cultivis-server"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
+[dev]
+port = 8080
 [assets]
 directory = "./public"
