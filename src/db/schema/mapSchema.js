@@ -11,7 +11,8 @@ import {
 export const fieldPoly = pgTable("fields", {
   id: uuid().defaultRandom().primaryKey(),
   userId: varchar({ length: 25 }).notNull(),
-  polygon: jsonb().notNull(),
+  area: numeric().notNull(),
+  geojson: jsonb().notNull(),
   image: text().default(""),
   editedAt: timestamp().defaultNow(),
 });

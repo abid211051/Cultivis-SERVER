@@ -18,7 +18,8 @@ CREATE TABLE "cropInfo" (
 CREATE TABLE "fields" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"userId" varchar(25) NOT NULL,
-	"polygon" jsonb NOT NULL,
+	"area" numeric NOT NULL,
+	"geojson" jsonb NOT NULL,
 	"image" text DEFAULT '',
 	"editedAt" timestamp DEFAULT now()
 );
