@@ -1,5 +1,5 @@
 {
-  "id": "5a965f85-2fe1-450d-972a-b9c1cbf74a45",
+  "id": "20a4941e-15dc-4da4-891b-6854417ba1de",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -134,8 +134,14 @@
           "primaryKey": false,
           "notNull": true
         },
-        "polygon": {
-          "name": "polygon",
+        "area": {
+          "name": "area",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "geojson": {
+          "name": "geojson",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true

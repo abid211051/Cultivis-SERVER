@@ -15,20 +15,19 @@ map.post("/createpoly", async (c) => {
   try {
     const db = connectdb(c);
     const reqobj = await c.req.json();
+
     const result = await db
       .insert(fieldPoly)
       .values({
         userId: reqobj.userId,
-        polygon: {
-          area: reqobj.polygon.area || 0,
-          coordinates: reqobj.polygon.coordinates || [],
-          polyid: reqobj.polygon.polyid || "",
-        },
+        area: reqobj.area,
+        geojson: reqobj.geojson,
         image: "",
       })
       .returning({
         id: fieldPoly.id,
-        polygon: fieldPoly.polygon,
+        area: fieldPoly.area,
+        geojson: fieldPoly.geojson,
         image: fieldPoly.image,
       });
     if (result?.length < 1) {
@@ -61,7 +60,8 @@ map.get("/getpoly/:userId", async (c) => {
     const field = await db
       .select({
         id: fieldPoly.id,
-        polygon: fieldPoly.polygon,
+        area: fieldPoly.area,
+        geojson: fieldPoly.geojson,
         image: fieldPoly.image,
         cropName: cropInfo.cropName,
         cropType: cropInfo.cropType,
@@ -97,7 +97,11 @@ map.put("/editpoly/:id", async (c) => {
       .update(fieldPoly)
       .set(body)
       .where(eq(fieldPoly.id, id))
-      .returning({ id: fieldPoly.id, polygon: fieldPoly.polygon });
+      .returning({
+        id: fieldPoly.id,
+        area: fieldPoly.area,
+        geojson: fieldPoly.geojson,
+      });
 
     return c.json(updatedField[0]);
   } catch (error) {
